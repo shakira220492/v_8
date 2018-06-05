@@ -1,0 +1,186 @@
+<script>
+    
+//    superglobal variables:
+    
+    var previous_field = "0";
+    var post_field = "0";
+    
+    function mouseover(fieldName, event)
+    {
+        console.log("fieldName: " + fieldName + " event: " + event);
+        get_session(fieldName, event);
+    }
+
+    function mouseout(fieldName, event)
+    {
+        console.log("fieldName: " + fieldName + " event: " + event);
+        get_session(fieldName, event);
+    }
+
+    function mousemove(fieldName, event)
+    {
+        console.log("fieldName: " + fieldName + " event: " + event);
+        get_session(fieldName, event);
+    }
+    
+    function click(fieldName, event)
+    {
+        console.log("fieldName: " + fieldName + " event: " + event);
+        get_session(fieldName, event);
+    }
+
+
+    function paintField()
+    {
+        var fieldName = "videoIconContent";
+        var event = "mouseout";
+        
+        get_session(fieldName, event);
+    }
+
+    function get_session(fieldName, event)
+    {
+        var form = $('#check-session-ajax');
+        var url = form.attr('action');
+
+        $.post(url, function (data)
+        {
+            var sessionStatus = data[0].sessionStatus;
+            var sessionId = data[0].sessionId;
+
+            if (sessionStatus === "0")
+            {
+                manage_field_layout(fieldName, event, sessionStatus, sessionId);
+            } else if (sessionStatus === "1")
+            {
+                manage_field_layout(fieldName, event, sessionStatus, sessionId);
+            }
+        }).fail(function () {
+            alert('ERROR');
+        });
+    }
+
+    function manage_field_layout(fieldName_TEMPORAL, event, sessionStatus, sessionId)
+    {
+        if (sessionStatus === "0")
+        {
+            var form = $('#get-stored-field-ajax');
+            var url = form.attr('action');
+            $.post(url, {fieldName: fieldName_TEMPORAL, sessionId: sessionId}, function (data)
+            {
+                var selectedFieldId_STORED = data[0].selectedFieldId;
+                var selectedFieldName_STORED = data[0].selectedFieldName;
+                var selectedFieldUsualmode_STORED = data[0].selectedFieldUsualmode;
+                var selectedFieldCurrentmode_STORED = data[0].selectedFieldCurrentmode;
+                var selectedLayoutId_STORED = data[0].selectedLayoutId;
+                
+                var permanentFieldId_STORED = data[0].permanentFieldId;
+                var permanentFieldName_STORED = data[0].permanentFieldName;
+                var permanentFieldUsualmode_STORED = data[0].permanentFieldUsualmode;
+                var permanentFieldCurrentmode_STORED = data[0].permanentFieldCurrentmode;
+                var permanentLayoutId_STORED = data[0].permanentLayoutId;
+
+                if (event === "mouseover")
+                {
+                    if (selectedFieldUsualmode_STORED === "permanent" ||
+                    selectedFieldUsualmode_STORED === "temporal")
+                    {
+                        draw_field(fieldName_TEMPORAL);
+                    }
+                    if (permanentFieldUsualmode_STORED && 
+                    permanentFieldName_STORED !== selectedFieldName_STORED)
+                    {
+                        erase_field(permanentFieldName_STORED);
+                    }
+                    
+                    store_field(selectedFieldId_STORED);
+                }
+
+                if (event === "mouseout")
+                {
+                    if (selectedFieldUsualmode_STORED === "temporal")
+                    {
+                        erase_field(fieldName_TEMPORAL);
+                    }
+                    if (permanentFieldUsualmode_STORED)
+                    {
+                        draw_field(permanentFieldName_STORED);
+                    }
+                    
+                    restore_field();
+                }
+
+                if (event === "click")
+                {
+                    set_this_field(fieldName_TEMPORAL, sessionId);
+                    set_usualMode(fieldName_TEMPORAL, sessionId);
+                    set_currentMode(fieldName_TEMPORAL, sessionId);
+                }
+
+            }).fail(function () {
+                alert('ERROR');
+            });
+
+        } else if (sessionStatus === "1")
+        {
+            var form = $('#get-stored-field-ajax');
+            var url = form.attr('action');
+            $.post(url, {fieldName: fieldName_TEMPORAL, sessionId: sessionId}, function (data)
+            {
+                
+                var selectedFieldId_STORED = data[0].selectedFieldId;
+                var selectedFieldName_STORED = data[0].selectedFieldName;
+                var selectedFieldUsualmode_STORED = data[0].selectedFieldUsualmode;
+                var selectedFieldCurrentmode_STORED = data[0].selectedFieldCurrentmode;
+                var selectedLayoutId_STORED = data[0].selectedLayoutId;
+                
+                var permanentFieldId_STORED = data[0].permanentFieldId;
+                var permanentFieldName_STORED = data[0].permanentFieldName;
+                var permanentFieldUsualmode_STORED = data[0].permanentFieldUsualmode;
+                var permanentFieldCurrentmode_STORED = data[0].permanentFieldCurrentmode;
+                var permanentLayoutId_STORED = data[0].permanentLayoutId;
+
+                if (event === "mouseover")
+                {
+                    if (selectedFieldUsualmode_STORED === "permanent" ||
+                    selectedFieldUsualmode_STORED === "temporal")
+                    {
+                        draw_field(fieldName_TEMPORAL);
+                    }
+                    if (permanentFieldUsualmode_STORED && 
+                    permanentFieldName_STORED !== selectedFieldName_STORED)
+                    {
+                        erase_field(permanentFieldName_STORED);
+                    }
+                    
+                    store_field(selectedFieldId_STORED);
+                }
+
+                if (event === "mouseout")
+                {
+                    if (selectedFieldUsualmode_STORED === "temporal")
+                    {
+                        erase_field(fieldName_TEMPORAL);
+                    }
+                    if (permanentFieldUsualmode_STORED)
+                    {
+                        draw_field(permanentFieldName_STORED);
+                    }
+                    
+                    restore_field();
+                }
+
+                if (event === "click")
+                {
+                    set_this_field(fieldName_TEMPORAL, sessionId);
+                    set_usualMode(fieldName_TEMPORAL, sessionId);
+                    set_currentMode(fieldName_TEMPORAL, sessionId);
+                }
+
+            }).fail(function () {
+                alert('ERROR');
+            });
+        }
+    }
+    
+</script>

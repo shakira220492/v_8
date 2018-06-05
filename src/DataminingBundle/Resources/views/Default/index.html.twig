@@ -1,0 +1,32 @@
+DATAMINING
+
+<div id="dataminingBundle">
+    status Session
+</div>
+
+<script>
+    window.onload = prepareDataminingBundle();
+
+    function prepareDataminingBundle()
+    {
+        var form = $('#check-session-ajax');
+        var url = form.attr('action');
+
+        $.post(url, function (data)
+        {
+            var sessionStatus = data[0].sessionStatus;
+
+            if (sessionStatus === "0")
+            {
+                var dataminingBundle = document.getElementById('dataminingBundle');
+                dataminingBundle.innerHTML = "dataminingBundle... logout mode";
+            } else
+            {
+                var dataminingBundle = document.getElementById('dataminingBundle');
+                dataminingBundle.innerHTML = "dataminingBundle... login mode";
+            }
+        }).fail(function () {
+            alert('ERROR');
+        });
+    }
+</script>

@@ -1,0 +1,114 @@
+{{ form_start(get_info_about_video_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'get-info-about-video-ajax'|default('form')} }) }}
+{{ form_end(get_info_about_video_form_ajax) }}
+
+{{ form_start(get_comment_about_video_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'get-comment-about-video-ajax'|default('form')} }) }}
+{{ form_end(get_comment_about_video_form_ajax) }}
+
+{{ form_start(add_like_video_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'add-like-video-ajax'|default('form')} }) }}
+{{ form_end(add_like_video_form_ajax) }}
+
+{{ form_start(add_dislike_video_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'add-dislike-video-ajax'|default('form')} }) }}
+{{ form_end(add_dislike_video_form_ajax) }}
+
+{{ form_start(add_comment_video_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'add-comment-video-ajax'|default('form')} }) }}
+{{ form_end(add_comment_video_form_ajax) }}
+
+<style>
+    #videoNameButton {
+        {#        background-color: #ccc;#}
+        cursor: pointer;
+        color: white;
+        font-size: xx-large;
+        z-index: 11;
+        transition-property: all;
+        transition-duration: 1s;
+        position: relative;
+        {#        opacity: 0.5;#}
+        {#        display: inline-block;#}
+        white-space: nowrap;
+    }
+
+    #userNameButton {
+        {#        background-color: #777;#}
+        cursor: pointer;
+        color: white;
+        font-size: x-large;
+        z-index: 11;
+        transition-property: all;
+        transition-duration: 1s;
+        position: relative;
+        opacity: 0.7;
+        {#        display: inline-block;#}
+        white-space: nowrap;
+    }
+
+
+    #videoNameButton:hover, #userNameButton:hover {
+        color: #1ab7ea;
+    }
+
+    #options-VideoBundle{
+        top: 80px;
+        bottom: 0px;
+        left: 25px;
+        right: 0px;
+        position: absolute;
+        display: inline-block;
+    }
+
+</style>
+
+<div id="videoBundle" 
+     style="position: absolute; 
+     top: 0px;
+     bottom: 0px;
+     left: 0px;
+     right: 0px;">
+
+    <div id="head-VideoBundle">
+        {{ include('@Video/head/head.html.twig') }}
+    </div>
+
+    <div class="animatedButton"
+         style="top: 130px; left: 0px; width: 25px;">
+        <img style='width:25px; height:25px;' 
+             src='files/images/icons/video/options.png' 
+             alt='Mountain View' 
+             id='optionsButton'>
+    </div>
+
+    <div id="options-VideoBundle">
+        <div id="menu-VideoBundle">
+            {{ include('@Video/options/menu.html.twig') }}
+        </div>
+        <div id="content-VideoBundle">
+            {{ include('@Video/options/content.html.twig') }}
+        </div>
+    </div>
+
+</div>
+
+<script>
+    window.onload = getInfoAboutTheVideo();
+
+    function prepareVideoBundle()
+    {
+        var form = $('#check-session-ajax');
+        var url = form.attr('action');
+
+        $.post(url, function (data)
+        {
+            var sessionStatus = data[0].sessionStatus;
+
+            if (sessionStatus === "0")
+            {
+                $("#videoBundle").append("1111");
+            } else
+            {
+                $("#videoBundle").append("2222");
+            }
+        }).fail(function () {
+            alert('ERROR 3333333333');
+        });
+    }
+</script>

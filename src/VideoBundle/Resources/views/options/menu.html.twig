@@ -1,0 +1,134 @@
+<table border='0'>
+    <tr>
+        <td>
+            <div class="animatedButton">
+                <img style='width:25px; height:25px;' 
+                     src='files/images/icons/video/comment.png' 
+                     alt='Mountain View' 
+                     id='commentButton'>
+            </div>
+        </td>
+        <td>
+            <div class="animatedButton">
+                <img style='width:25px; height:25px;' 
+                     src='files/images/icons/video/list.png' 
+                     alt='Mountain View' 
+                     id='addToListButton'>
+            </div>
+        </td>
+        <td>
+            <div class="animatedButton">
+                <img style='width:25px; height:25px;' 
+                     src='files/images/icons/video/donate.png' 
+                     alt='Mountain View' 
+                     id='donateButton'>
+            </div>
+        </td>
+        <td>
+            <div class="animatedButton">
+                <img style='width:25px; height:25px;' 
+                     src='files/images/icons/video/lyrics.png' 
+                     alt='Mountain View' 
+                     id='lyricsButton'>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<script>
+    
+    var videoNameButton = document.getElementById('videoNameButton');
+    var userNameButton = document.getElementById('userNameButton');
+    var commentButton = document.getElementById('commentButton');
+    var addToListButton = document.getElementById('addToListButton');
+    var donateButton = document.getElementById('donateButton');
+    var lyricsButton = document.getElementById('lyricsButton');
+    var optionsButton = document.getElementById('optionsButton');
+
+    videoNameButton.addEventListener("click", videoNameFunction, false);
+    userNameButton.addEventListener("click", userNameFunction, false);
+    commentButton.addEventListener("click", commentFunction, false);
+    addToListButton.addEventListener("click", addToListFunction, false);
+    donateButton.addEventListener("click", donateFunction, false);
+    lyricsButton.addEventListener("click", lyricsFunction, false);
+    optionsButton.addEventListener("click", optionsFunction, false);
+
+    function videoNameFunction()
+    {
+        clear_VideoBundle_content();
+        var description_VideoBundle = document.getElementById('description-VideoBundle');
+        description_VideoBundle.style.display = "block";
+    }
+    
+    function userNameFunction()
+    {
+        clear_VideoBundle_content();
+        var artist_VideoBundle = document.getElementById('artist-VideoBundle');
+        artist_VideoBundle.style.display = "block";
+    }
+    
+    function optionsFunction()
+    {
+        var optionsVideoBundle = document.getElementById("options-VideoBundle");
+
+        if (modeOptions_VideoBundle === "visible")
+        {
+            optionsVideoBundle.style.transitionProperty = "all";
+            optionsVideoBundle.style.transitionDuration = 1 + "s";
+            optionsVideoBundle.style.top = "-1000px";
+            optionsVideoBundle.style.bottom = "1000px";
+
+            modeOptions_VideoBundle = "hide";
+        } else if (modeOptions_VideoBundle === "hide")
+        {
+            optionsVideoBundle.style.transitionProperty = "all";
+            optionsVideoBundle.style.transitionDuration = 1 + "s";
+            optionsVideoBundle.style.top = "80px";
+            optionsVideoBundle.style.bottom = "0px";
+
+            modeOptions_VideoBundle = "visible";
+        }
+    }
+
+    function commentFunction()
+    {
+        clear_VideoBundle_content();
+        var comment_VideoBundle = document.getElementById('comment-VideoBundle');
+        comment_VideoBundle.style.display = "block";
+    }
+    function addToListFunction()
+    {
+        clear_VideoBundle_content();
+        var addToList_VideoBundle = document.getElementById('addToList-VideoBundle');
+        addToList_VideoBundle.style.display = "block";
+    }
+    function donateFunction()
+    {
+        clear_VideoBundle_content();
+        var donate_VideoBundle = document.getElementById('donate-VideoBundle');
+        donate_VideoBundle.style.display = "block";
+    }
+    function lyricsFunction()
+    {
+        clear_VideoBundle_content();
+        var lyrics_VideoBundle = document.getElementById('lyrics-VideoBundle');
+        lyrics_VideoBundle.style.display = "block";
+    }
+
+    function clear_VideoBundle_content()
+    {
+        var description_VideoBundle = document.getElementById('description-VideoBundle');
+        var artist_VideoBundle = document.getElementById('artist-VideoBundle');
+        var comment_VideoBundle = document.getElementById('comment-VideoBundle');
+        var lyrics_VideoBundle = document.getElementById('lyrics-VideoBundle');
+        var donate_VideoBundle = document.getElementById('donate-VideoBundle');
+        var addToList_VideoBundle = document.getElementById('addToList-VideoBundle');
+        
+        description_VideoBundle.style.display = "none";
+        artist_VideoBundle.style.display = "none";
+        comment_VideoBundle.style.display = "none";
+        lyrics_VideoBundle.style.display = "none";
+        donate_VideoBundle.style.display = "none";
+        addToList_VideoBundle.style.display = "none";
+    }
+</script>

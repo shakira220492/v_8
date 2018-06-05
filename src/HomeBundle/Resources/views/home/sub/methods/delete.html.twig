@@ -1,0 +1,27 @@
+<script>
+    function delete_stored_field(fieldName, sessionId)
+    {
+        var form = $('#delete-stored-field-ajax');
+        var url = form.attr('action');
+
+        $.post(url, {fieldName: fieldName, sessionId: sessionId}, function (data)
+        {
+{#            alert("#delete-stored-field-ajax");#}
+            alert("you has used delete function!!!");
+        }).fail(function () {
+            alert("ERROR");
+        });
+    }
+    function delete_stored_layout(fieldName, sessionId)
+    {
+        var form = $('#delete-stored-layout-ajax');
+        var url = form.attr('action');
+
+        $.post(url, {fieldName: fieldName, sessionId: sessionId}, function (data)
+        {
+{#            alert("#delete-stored-layout-ajax");#}
+        }).fail(function () {
+            alert("ERROR");
+        });
+    }
+</script>

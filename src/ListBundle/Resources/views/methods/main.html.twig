@@ -1,0 +1,30 @@
+<script>
+
+    function draw_fieldListBundle(fieldName)
+    {
+        var fieldName_Value = document.getElementById(fieldName);
+
+{#        fieldName_Value.style.opacity = "1";
+        fieldName_Value.style.zIndex = "3";
+        fieldName_Value.style.color = "white";#}
+                
+        fieldName_Value.style.display = "block";
+
+        console.log("DRAW " + fieldName_Value);
+    }
+
+    function erase_fieldlistBundle(fieldName)
+    {
+        var fieldName_Value = document.getElementById(fieldName);
+
+{#        fieldName_Value.style.opacity = "0";
+        fieldName_Value.style.zIndex = "2";
+        fieldName_Value.style.color = "white";#}
+        
+        fieldName_Value.style.display = "none";
+        
+        console.log("ERASE " + fieldName_Value);
+    }
+
+</script>
+

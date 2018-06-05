@@ -1,0 +1,67 @@
+options:
+    resource: "@OptionsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+session:
+    resource: "@SessionBundle/Resources/config/routing.yml"
+    prefix:   /
+
+presentation:
+    resource: "@PresentationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+play_banner:
+    resource: "@PlayBannerBundle/Resources/config/routing.yml"
+    prefix:   /
+
+advertising:
+    resource: "@AdvertisingBundle/Resources/config/routing.yml"
+    prefix:   /
+
+premium:
+    resource: "@PremiumBundle/Resources/config/routing.yml"
+    prefix:   /
+
+upload:
+    resource: "@UploadBundle/Resources/config/routing.yml"
+    prefix:   /
+
+searchengine:
+    resource: "@SearchengineBundle/Resources/config/routing.yml"
+    prefix:   /
+
+create:
+    resource: "@CreateBundle/Resources/config/routing.yml"
+    prefix:   /
+
+datamining:
+    resource: "@DataminingBundle/Resources/config/routing.yml"
+    prefix:   /
+
+list:
+    resource: "@ListBundle/Resources/config/routing.yml"
+    prefix:   /
+
+profile:
+    resource: "@ProfileBundle/Resources/config/routing.yml"
+    prefix:   /
+
+artist:
+    resource: "@ArtistBundle/Resources/config/routing.yml"
+    prefix:   /
+
+media:
+    resource: "@MediaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+configuration:
+    resource: "@ConfigurationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+video:
+    resource: "@VideoBundle/Resources/config/routing.yml"
+    prefix:   /
+
+home:
+    resource: "@HomeBundle/Resources/config/routing.yml"
+    prefix:   /

@@ -1,0 +1,349 @@
+<style>
+    #commentVideoSection{
+        position: absolute; 
+        width: 100%; 
+        bottom: 0px; 
+        top: 125px; 
+        overflow-y: scroll; 
+        color: white; 
+        transition-property: all; 
+        transition-duration: 0.4s;
+        z-index: 3;        
+    }
+
+    #sendComment{
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: 80px;
+        right: 15px;
+        z-index: 1;
+        cursor: pointer;
+        text-align: center;
+        z-index: 2;
+    }
+    
+
+    #modeComment{
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: 80px;
+        right: 50px;
+        z-index: 1;
+        cursor: pointer;
+        text-align: center;
+        z-index: 2;
+    }
+    
+    #inputSection{
+        position: absolute; 
+        top: 0px; 
+        left: 0px;
+        color: #1ab7ea;
+        width: 100%;
+        height: 100%;
+        resize: none;
+    }
+
+    #writeACommentSection{
+        position: absolute;
+        background-color: white;
+        color: black;
+        opacity: 0.5;
+        cursor: text;
+        width: 100%;
+        height: 100px;
+        top: 25px;
+        overflow-y: scroll; 
+        color: white; 
+        transition-property: all; 
+        transition-duration: 0.4s;
+        z-index: 1;        
+    }
+</style>
+
+<div id='writeACommentSection'>
+    <textarea id="inputSection"
+        placeholder="Write here your comment... "></textarea>
+</div>
+
+<div id='sendComment' class="animatedButton">
+    <img style='width:100%; height:100%;' 
+     src='files/images/icons/video/sendComment.png' 
+     alt='Mountain View' 
+     id='sendCommentButton'>
+</div>
+
+<div id='commentVideoSection'>
+</div>
+
+<div id='modeComment' class="animatedButton">
+    <img style='width:100%; height:100%;' 
+     src='files/images/icons/video/modeComment.png' 
+     alt='Mountain View' 
+     id='modeCommentButton'>
+</div>
+
+<script>
+    var sendComment = document.getElementById('sendComment');
+    sendComment.addEventListener("click", sendCommentFunction, false);
+
+    function sendCommentFunction()
+    {
+        var form = $('#add-comment-video-ajax');
+        var url = form.attr('action');
+
+        var commentContent = document.getElementById("inputSection").value;
+        var idVideo = 1;
+        var idUser = 1;
+        
+        $.post(url, {idUser: idUser, 
+            idVideo: idVideo,
+            commentContent: commentContent}, function (data)
+        {
+            alert("esta funcionando");
+        }).fail(function () {
+            alert('ERROR .... no esta duncionando..... ');
+        });        
+    }
+</script>
+
+<script>
+    window.onload = setInterval('getCommentAboutVideo()', 2000);
+    
+        var i = 0;
+        function getCommentAboutVideo()
+        {
+            var form = $('#get-comment-about-video-ajax');
+            var url = form.attr('action');
+
+
+            $.post(url, function (data)
+            {
+                var commentId = data[0].commentId;
+                var commentContent = data[0].commentContent;
+                var commentLikes = data[0].commentLikes;
+                var commentDislikes = data[0].commentDislikes;
+                var commentCreationDate = data[0].commentCreationDate;
+                var userId = data[0].userId;
+                var userName = data[0].userName;
+                var videoId = data[0].videoId;
+
+                i++;
+
+                $("#commentVideoSection").append(
+                    "<div id='comment" + i + "'" +
+                    "style='" +
+                    "position: relative;" +
+                    "overflow: hidden;'>" +
+
+                        "<div id='backgroundCommentSection'" +
+                        "style='background-color: gray;" +
+                        "opacity: 0;" +
+                        "top: 0px;" +
+                        "left: 0px;" +
+                        "width: 100%;" +
+                        "height: 100%;" +
+                        "position: absolute;" +
+                        "'>" +
+                        "</div>" +
+
+                        "<div id='commentSection'" +
+                        "style='position: relative;" +
+                        "opacity: 0.9;" +
+                        "top: 0px;" +
+                        "left: 0px;'>" +
+                        "<p>" + commentContent + ". " + "</p>" +
+                        "<hr>"+
+                        "</div>" +
+
+                    "</div>" +
+                    "<br>"
+                );
+                
+                if (modeContent === "static")
+                {
+                }
+                else if (modeContent === "dynamic")
+                {                    
+                    var respectlyId = "comment" + i;
+
+                    var element = document.getElementById(respectlyId);
+                    element.scrollIntoView();
+                }
+
+            }).fail(function () {
+                alert('ERROR... no funciona aun');
+            });
+
+        }
+        
+        var modeButton = document.getElementById("modeCommentButton");
+        modeButton.addEventListener("click", changeMode, false);
+        
+        function changeMode()
+        {
+            if (modeContent === "static")
+            {
+                modeContent = "dynamic";
+            }
+            else if (modeContent === "dynamic")
+            {
+                modeContent = "static";
+            }
+        }
+        
+</script>
+
+
+
+
+
+
+
+
+
+
+
+{#<script>
+    window.onload = setInterval('getCommentAboutVideo()', 3000);
+    
+        var i = 0;
+        function getCommentAboutVideo()
+        {
+            var form = $('#get-comment-about-video-ajax');
+            var url = form.attr('action');
+
+
+            $.post(url, function (data)
+            {
+                var commentId = data[0].commentId;
+                var commentContent = data[0].commentContent;
+                var commentLikes = data[0].commentLikes;
+                var commentDislikes = data[0].commentDislikes;
+                var commentCreationDate = data[0].commentCreationDate;
+                var userId = data[0].userId;
+                var userName = data[0].userName;
+                var videoId = data[0].videoId;
+
+                i++;
+
+                $("#commentVideoSection").append(
+                        "<div id='comment" + i + "'" +
+                        "style='" +
+                        "position: relative;" +
+                        "overflow: hidden;'>" +
+                        "<div id='backgroundCommentSection'" +
+                        "style='background-color: gray;" +
+                        "opacity: 0;" +
+                        "top: 0px;" +
+                        "left: 0px;" +
+                        "width: 100%;" +
+                        "height: 100%;" +
+                        "position: absolute;" +
+                        "'>" +
+                        "</div>" +
+                        "<div id='commentSection'" +
+                        "style='position: relative;" +
+                        "opacity: 0.9;" +
+                        "top: 0px;" +
+                        "left: 0px;'>" +
+                        "<p>" + commentContent + " .... " + "</p>" +
+                        "</div>" +
+                        "<div" +
+                        "style='position: relative;'>" +
+                        "<table>" +
+                        "<tr>" +
+                        "<td>" +
+                        "<img src='files/images/icons/video/like.png' alt='Mountain View' " +
+                        "style='width:25px; " +
+                        "height:25px;'>" +
+                        "</td>" +
+                        "<td>" +
+                        "<p>" +
+                        commentLikes +
+                        "</p>" +
+                        "</td>" +
+                        "<td>" +
+                        "<img src='files/images/icons/video/dislike.png' alt='Mountain View' " +
+                        "style='" +
+                        "width:25px; " +
+                        "height:25px;'>" +
+                        "</td>" +
+                        "<td>" +
+                        "<p>" +
+                        commentDislikes +
+                        "</p>" +
+                        "</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td colspan='4'>" +
+                        "<p>" + userName + " - " + commentCreationDate + "</p>" +
+                        "</td>" +
+                        "</tr>" +
+                        "</table>" +
+                        "</div>" +
+                        "</div>" +
+                        "<br>"
+                        );
+
+            }).fail(function () {
+                alert('ERROR... no funciona aun');
+            });
+
+        }
+</script>#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#
+<style>
+    #myDIV{
+        height: 250px;
+        width: 250px;
+        overflow: auto;
+        background: green;
+    }
+
+    #content{
+        margin: 500px;
+        height: 800px;
+        width: 2000px;
+        background-color: coral;
+    }
+</style>
+
+<div id="myDIV">
+    <div id="content">
+        Some text inside an element.
+    </div>
+</div>
+
+<button onclick='myFunction()'>Scroll</button>
+    
+<script>
+    
+    function myFunction()
+    {
+        var element = document.getElementById("content");
+        element.scrollIntoView();
+    }
+</script>
+#}
+
+
+
+
+
+

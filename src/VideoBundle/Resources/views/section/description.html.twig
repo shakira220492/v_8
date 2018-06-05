@@ -1,0 +1,105 @@
+<style>
+    #amountLikesVideo {
+{#        position: absolute;#}
+        background-color: darkgoldenrod;
+        width: 60px;
+        height: 15px;
+{#        top: 0px;#}
+        display: inline-block;
+    }
+    
+    #amountDislikesVideo {
+{#        position: absolute;#}
+        background-color: blue;
+        width: 60px;
+        height: 15px;
+{#        top: 0px;#}
+        display: inline-block;
+    }
+</style>
+
+<div id='likeButton' class="animatedButton">
+    <img style="width:25px; height:25px;" 
+         src='files/images/icons/video/like.png' 
+         alt='Mountain View'>
+</div>
+
+<div id="amountLikesVideo">
+    amount likes
+</div>
+
+<div id='dislikeButton' class="animatedButton">
+    <img style='width:25px; height:25px;' 
+         src='files/images/icons/video/dislike.png' 
+         alt='Mountain View'>
+</div>
+
+<div id="amountDislikesVideo">
+    amount dislikes
+</div>
+
+<div id="uploadDateVideo">
+    upload date video
+</div>
+
+<div id="amountViewsVideo">
+    amount views
+</div>
+
+<div id="descriptionVideo">
+    description
+</div>
+
+<div id="reportsVideo">
+    reports
+</div>
+
+<script>
+
+    var likeButton = document.getElementById('likeButton');
+    var dislikeButton = document.getElementById('dislikeButton');
+
+    likeButton.addEventListener("click", addLikeToVideo, false);
+    dislikeButton.addEventListener("click", addDislikeToVideo, false);
+
+    function addLikeToVideo()
+    {
+        var form = $('#add-like-video-ajax');
+        var url = form.attr('action');
+
+        var idUser = 1;
+        var idVideo = 1;
+        var amountLikes = 1;
+
+        $.post(url, {idUser: idUser, idVideo: idVideo, amountLikes: amountLikes}, function (data)
+        {
+            alert('SI FUNCIONA');
+        }).fail(function () {
+            alert('ERROR');
+        });
+    }
+
+    function addDislikeToVideo()
+    {
+        var form = $('#add-dislike-video-ajax');
+        var url = form.attr('action');
+
+        var idUser = 1;
+        var idVideo = 1;
+        var amountDislikes = 1;
+
+        $.post(url, {idUser: idUser, idVideo: idVideo, amountDislikes: amountDislikes}, function (data)
+        {
+            alert('SI FUNCIONA');
+        }).fail(function () {
+            alert('ERROR');
+        });
+    }
+</script>
+
+
+
+
+
+
+

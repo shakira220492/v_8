@@ -1,0 +1,121 @@
+<script>
+    function set_this_field(fieldName, sessionId)
+    {
+        var form = $('#set-this-field-ajax');
+        var url = form.attr('action');
+
+        $.post(url, {fieldName: fieldName, sessionId: sessionId}, function (data)
+        {
+            alert("set_this_field \n fieldName: "+fieldName+" \n sessionId: "+sessionId);
+            
+            
+            
+            
+{#            $sendData[0] = array(
+                'fieldId' => "22", 
+                'fieldName' => "22", 
+                'fieldUsualmode' => "22", 
+                'fieldCurrentmode' => "22", 
+                'userId' => "22" 
+            );#}
+            
+            
+            
+            var ejemplo = data[0].fieldId;
+            
+            alert("aaa:   "+ejemplo);
+            
+            
+            
+            
+        }).fail(function () {
+            alert("ERROR1");
+        });
+    }
+    function set_this_layout(fieldName, sessionId)
+    {
+        var form = $('#set-this-layout-ajax');
+        var url = form.attr('action');
+
+        $.post(url, {fieldName: fieldName, sessionId: sessionId}, function (data)
+        {
+        }).fail(function () {
+            alert("ERROR");
+        });
+    }
+
+    function update(table, subFieldName, subFieldValue)
+    {
+        var form = $('#update-ajax');
+        var url = form.attr('action');
+
+        $.post(url, {subFieldName: subFieldName, subFieldValue: subFieldValue}, function (data)
+        {
+            var subFieldsAmount = data[0].subFieldsAmount;
+
+            for (i = 0; i < subFieldsAmount; i++)
+            {
+                var valoruno = data[i].valor_1;
+                var valordos = data[i].valor_2;
+
+                alert("trampa #" + i + ": \n" + valoruno + "; " + valordos + ". ");
+            }
+
+
+        }).fail(function () {
+            alert("ERROR");
+        });
+
+    }
+
+    function set_usualMode(fieldName, sessionId)
+    {
+        var form = $('#set-usualMode-ajax');
+        var url = form.attr('action');
+
+        $.post(url, {fieldName: fieldName, sessionId: sessionId}, function (data)
+        {
+            alert("set_usualMode \n fieldName: "+fieldName+"\n sessionId: "+sessionId);
+                            
+            var ejemplo = data[0].fieldId;
+            
+            alert("123:   "+ejemplo);
+            
+        }).fail(function () {
+            alert("ERROR1");
+        });
+    }
+
+    function set_currentMode(fieldName, sessionId)
+    {
+        var form = $('#set-currentMode-ajax');
+        var url = form.attr('action');
+
+        $.post(url, {fieldName: fieldName, sessionId: sessionId}, function (data)
+        {
+            var ejemplo = data[0].fieldId;
+            
+            alert("246:   "+ejemplo);
+            
+        }).fail(function () {
+            alert("ERROR1");
+        });
+    }
+    
+    function store_field(this_field)
+    {
+        post_field = previous_field;
+        previous_field = this_field;
+    }
+    
+    function restore_field()
+    {
+        post_field = "0";
+        previous_field = "0";
+    }
+    
+    function compare()
+    {
+        
+    }
+</script>

@@ -1,0 +1,14 @@
+{{ form_start(get_task_properties_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'get-task-properties-ajax'|default('form')} }) }}
+{{ form_end(get_task_properties_form_ajax) }}
+
+{{ form_start(check_session_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'check-session-ajax'|default('form')} }) }}
+{{ form_end(check_session_form_ajax) }}
+
+{{ form_start(log_in_user_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'log-in-user-ajax'|default('form')} }) }}
+{{ form_end(log_in_user_form_ajax) }}
+
+{{ form_start(log_out_user_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'log-out-user-ajax'|default('form')} }) }}
+{{ form_end(log_out_user_form_ajax) }}
+
+{{ include('@Session/i_Session/logInUser.html.twig') }}
+{{ include('@Session/i_Session/logOutUser.html.twig') }}

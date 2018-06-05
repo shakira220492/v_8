@@ -1,0 +1,17 @@
+<style>
+        #listVideoSection{
+        position: absolute; 
+        width: 100%; 
+        bottom: 0px; 
+        top: 25px; 
+        overflow-y: scroll; 
+        color: white; 
+        transition-property: all; 
+        transition-duration: 0.4s;
+        z-index: 3;        
+    }
+</style>
+
+<div id='listVideoSection'>
+    {{ include('@List/Default/index.html.twig') }}
+</div>

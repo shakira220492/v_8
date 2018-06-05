@@ -1,0 +1,32 @@
+PROFILE
+
+<div id="profileBundle">
+    status Session
+</div>
+
+<script>
+    window.onload = prepareProfileBundle();
+
+    function prepareProfileBundle()
+    {
+        var form = $('#check-session-ajax');
+        var url = form.attr('action');
+
+        $.post(url, function (data)
+        {
+            var sessionStatus = data[0].sessionStatus;
+
+            if (sessionStatus === "0")
+            {
+                var profileBundle = document.getElementById('profileBundle');
+                profileBundle.innerHTML = "profileBundle... logout mode";
+            } else
+            {
+                var profileBundle = document.getElementById('profileBundle');
+                profileBundle.innerHTML = "profileBundle... login mode";
+            }
+        }).fail(function () {
+            alert('ERROR');
+        });
+    }
+</script>

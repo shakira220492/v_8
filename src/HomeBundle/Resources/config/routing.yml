@@ -1,0 +1,54 @@
+#everyone of next blocs will contain only functionalities
+
+a_List:
+    resource: "routes/a_List/a_List.yml"
+    prefix:   /a_List
+    
+c_Upload:
+    resource: "routes/c_Upload/c_Upload.yml"
+    prefix:   /c_Upload
+    
+d_Premium:
+    resource: "routes/d_Premium/d_Premium.yml"
+    prefix:   /d_Premium
+    
+e_Advertising:
+    resource: "routes/e_Advertising/e_Advertising.yml"
+    prefix:   /e_Advertising
+    
+f_Presentation:
+    resource: "routes/f_Presentation/f_Presentation.yml"
+    prefix:   /f_Presentation
+    
+g_SearchEngine:
+    resource: "routes/g_SearchEngine/g_searchEngine.yml"
+    prefix:   /g_SearchEngine
+    
+h_Task:
+    resource: "routes/h_Task/h_Task.yml"
+    prefix:   /h_Task
+    
+i_Session:
+    resource: "routes/i_Session/i_Session.yml"
+    prefix:   /i_Session
+    
+j_PlayBanner:
+    resource: "routes/j_PlayBanner/j_PlayBanner.yml"
+    prefix:   /j_PlayBanner
+    
+k_video:
+    resource: "routes/k_Video/k_Video.yml"
+    prefix:   /k_Video
+    
+GUIProperties:
+    resource: "routes/GUIProperties/GUIProperties.yml"
+    prefix:   /GUIProperties
+    
+home:
+    path:     /
+    defaults: { _controller: HomeBundle:Home:home }
+    
+    
+    
+    
+    

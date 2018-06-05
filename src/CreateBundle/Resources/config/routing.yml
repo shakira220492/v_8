@@ -1,0 +1,3 @@
+create_homepage:
+    path:     /createBundle
+    defaults: { _controller: CreateBundle:Default:index }

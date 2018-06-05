@@ -1,0 +1,143 @@
+<div style="
+{#     background-color: black; #}
+     position: absolute;
+     top: 0px;
+     width: 100%;
+     height: 30px;">
+    <input type="text" id="searchEngineMachine" placeholder="JBSB92" name="keyword"
+           style="width: 100%;
+           height: 30px;
+           background-color: white;
+           opacity: 0.5;
+           border: 0;
+           align-content: center;"/>
+</div>
+<div class="searchProduct" style="
+     background-color: #1ab7ea; 
+     position: absolute;
+     top: 0px;
+     right: 0px;
+     width: 30px;
+     height: 30px;"
+     onclick="manageKeyword(), reloadListSearchProduct();">
+        <img style='
+         width:30px; 
+         height:30px; 
+         opacity: 0.9;' 
+         src="files/images/icons/presentation/search.png" alt="Mountain View">
+</div>
+
+<script>
+
+    function reloadListSearchProduct()
+    {
+        var keyword = document.getElementById('searchEngineMachine').value;
+
+        $.post("reloadListSearchProduct", {keyword: keyword}, function (htmlExterno) {
+            $(".divListSongs").html(htmlExterno);
+        });
+    }
+
+    function manageKeyword()
+    {
+        var form = $('#search-keyword-ajax');
+
+        var url = form.attr('action');
+
+        var keyword = document.getElementById('searchEngineMachine').value;
+
+        $.post(url, {keyword: keyword
+        }, function (result) {
+
+            var keywords_amount = result[0].keywords_amount;
+
+            for (i = 0; i <= keywords_amount; i++)
+            {
+
+                var keyword_name = result[i].keyword_name;
+                var keyword_status = result[i].keyword_status;
+                
+                if (keyword_status === "exist")
+                {
+                    createUserKeyword(keyword_name);
+                    increaseScoreUserKeyword(keyword_name);
+                } else if (keyword_status === "not_exist")
+                {
+                    createKeyword(keyword_name);
+                    createUserKeyword(keyword_name);
+                    increaseScoreUserKeyword(keyword_name);
+                }
+            }
+
+        }).fail(function () {
+            alert('ERROR');
+        });
+    }
+
+    function createKeyword(keyword_name)
+    {
+        var form = $('#create-keyword-ajax');
+
+        var url = form.attr('action');
+
+        $.post(url, {keywordName: keyword_name
+        }, function (result) {
+
+{#            alert("createKeyword,,, " + keyword_name);#}
+
+        }).fail(function () {
+            alert('ERROR');
+        });
+
+    }
+
+    function createUserKeyword(keyword_name)
+    {
+        var form = $('#create-user-keyword-ajax');
+
+        var url = form.attr('action');
+        
+        $.post(url, {keywordName: keyword_name
+        }, function (result) {
+
+            alert("createUserKeyword,,, " + keyword_name);
+
+        }).fail(function () {
+            alert('ERROR');
+        });
+    }
+
+    function increaseScoreUserKeyword(keyword_name)
+    {
+        var form = $('#increase-user-keyword-ajax');
+
+        var url = form.attr('action');
+
+        $.post(url, {keywordName: keyword_name
+        }, function (result) {
+
+            alert("increaseUserKeyword,,, " + keyword_name);
+
+        }).fail(function () {
+            alert('ERROR');
+        });
+    }
+
+    function increaseAmountViewVideo(ProductId)
+    {
+        var form = $('#increase-amount-view-video-ajax');
+
+        var url = form.attr('action');
+
+        var id_product = ProductId;
+
+        $.post(url, {id_product: id_product
+        }, function (result) {
+            console.log("product_id: " + result[0].product_id);
+            console.log("product_amountVisits: " + result[0].product_amountVisits);
+
+        }).fail(function () {
+            alert('ERROR');
+        });
+    }
+</script>

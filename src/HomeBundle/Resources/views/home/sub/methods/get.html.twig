@@ -1,0 +1,48 @@
+<script>
+    function get_stored_field(fieldName, sessionId)
+    {
+        var form = $('#get-stored-field-ajax');
+        var url = form.attr('action');
+        $.post(url, {fieldName: fieldName, sessionId: sessionId}, function (data)
+        {
+            var fieldId = data[0].fieldId;
+            var fieldName = data[0].fieldName;
+            var fieldStatus = data[0].fieldStatus;
+            alert("#1111111111_______ get-stored-field-ajax: "+
+                    "fieldId: "+fieldId+", "+
+                    "fieldName: "+fieldName+", "+
+                    "fieldStatus: "+fieldStatus+". ");
+            draw_this_field(fieldId, fieldName, fieldStatus);
+        }).fail(function () {
+            alert('ERROR');
+        });
+    }
+    function get_stored_layout(fieldName, sessionId)
+    {
+        var form = $('#get-stored-layout-ajax');
+        var url = form.attr('action');
+
+        $.post(url, {fieldName: fieldName, sessionId: sessionId}, function (data)
+        {
+            var layoutId = data[0].layoutId;
+            var layoutBackgroundcolor = data[0].layoutBackgroundcolor;
+            var layoutOpacity = data[0].layoutOpacity;
+            var layoutWidth = data[0].layoutWidth;
+            var layoutHeight = data[0].layoutHeight;
+            var fieldName = data[0].fieldName;
+            var userId = data[0].userId;
+            alert("#22222222______ get-stored-layout-ajax: "+
+                    "layoutId: "+layoutId+", "+
+                    "layoutBackgroundcolor: "+layoutBackgroundcolor+", "+
+                    "layoutOpacity: "+layoutOpacity+", "+
+                    "layoutWidth: "+layoutWidth+", "+
+                    "layoutHeight: "+layoutHeight+", "+
+                    "fieldName: "+fieldName+", "+
+                    "userId: "+userId+". "
+                    );
+        }).fail(function () {
+            alert("ERROR");
+        });
+    }
+
+</script>
