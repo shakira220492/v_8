@@ -14,21 +14,64 @@ class i_SessionController extends Controller {
     }
 
     public function checkSessionAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
         if ($request->isXMLHttpRequest()) {
 
             if (isset($_SESSION['loginSession'])) {
                 // en caso de que exista una sesión
+                
+                $user_id = $_SESSION['loginSession'];
+//                $user_id = 1;
+                
+                // create the query
+                $user = $em->createQuery(
+                    "SELECT u.userId, u.userName, u.userFirstgivenname, 
+                    u.userSecondgivenname, u.userFirstfamilyname, u.userSecondfamilyname, 
+                    u.userEmail, u.userPassword, u.userBiography 
+                    FROM HomeBundle:User u 
+                    WHERE u.userId = $user_id"
+                );
+                
+                $users = $user->getResult();
+                
+                $userId_Value = $users[0]['userId'];
+                $userName_Value = $users[0]['userName'];
+                $userFirstgivenname_Value = $users[0]['userFirstgivenname'];
+                $userSecondgivenname_Value = $users[0]['userSecondgivenname'];
+                $userFirstfamilyname_Value = $users[0]['userFirstfamilyname'];
+                $userSecondfamilyname_Value = $users[0]['userSecondfamilyname'];
+                $userEmail_Value = $users[0]['userEmail'];
+                $userPassword_Value = $users[0]['userPassword'];
+                $userBiography_Value = $users[0]['userBiography'];
+                
                 $users2 = array();
                 $users2[] = array(
                     'sessionStatus' => "1",
-                    'sessionId' => $_SESSION['loginSession']
+                    'sessionId' => $userId_Value,
+                    'userName' => $userName_Value,
+                    'userFirstgivenname' => $userFirstgivenname_Value,
+                    'userSecondgivenname' => $userSecondgivenname_Value,
+                    'userFirstfamilyname' => $userFirstfamilyname_Value,
+                    'userSecondfamilyname' => $userSecondfamilyname_Value,
+                    'userEmail' => $userEmail_Value,
+                    'userPassword' => $userPassword_Value,
+                    'userBiography' => $userBiography_Value
                 );
+                
             } else {
                 // en caso de que no exista una sesión
                 $users2 = array();
                 $users2[] = array(
                     'sessionStatus' => "0",
-                    'sessionId' => "logOut"
+                    'sessionId' => "logOut",
+                    'userName' => $userName_Value,
+                    'userFirstgivenname' => "_",
+                    'userSecondgivenname' => "_",
+                    'userFirstfamilyname' => "_",
+                    'userSecondfamilyname' => "_",
+                    'userEmail' => "_",
+                    'userPassword' => "_",
+                    'userBiography' => "_"
                 );
             }
 
@@ -80,7 +123,13 @@ class i_SessionController extends Controller {
                 $em->persist($login);
                 $em->flush();
 
-                return new Response(json_encode($users), 200, array('Content-Type' => 'application/json'));
+                $users2 = array();
+                $users2[] = array(
+                    'id' => $users[0]['userId'],
+                    'userName' => $users[0]['userName']
+                );
+                
+                return new Response(json_encode($users2), 200, array('Content-Type' => 'application/json'));
             }
         }
     }

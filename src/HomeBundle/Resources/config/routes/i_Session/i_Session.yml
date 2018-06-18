@@ -5,7 +5,7 @@ index_session:
 check_session_form:
     path:     /checkSession
     defaults: { _controller: HomeBundle:i_Session:checkSession }
-    methods:  POST    
+    methods:  POST
     
 log_in_user_form:
     path:     /logInUser

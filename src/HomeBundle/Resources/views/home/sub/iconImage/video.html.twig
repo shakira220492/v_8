@@ -2,7 +2,7 @@
      style="position: absolute;
      height: 30px;
      width: 30px;
-     top: 30px;
+     top: 0px;
      z-index: 1;">
     <img style='
          width:30px; 
@@ -11,3 +11,22 @@
          z-index: 1;' 
          src="files/images/icons/presentation/video.png" alt="Mountain View">
 </div>
+<script>
+    var videoIconButton = document.getElementById('videoIconButton');
+    
+    videoIconButton.addEventListener("click", show_videoIconContent, false);
+    
+    function show_videoIconContent()
+    {
+        var videoIconContent = document.getElementById('videoIconContent');
+        
+        if (videoIconContent.style.display == "none")
+        {
+            clear_options();
+            videoIconContent.style.display = "block";
+        } else
+        {
+            videoIconContent.style.display = "none";
+        }
+    }
+</script>

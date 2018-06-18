@@ -1,3 +1,11 @@
+cache:
+    resource: "@CacheBundle/Resources/config/routing.yml"
+    prefix:   /
+
+history:
+    resource: "@HistoryBundle/Resources/config/routing.yml"
+    prefix:   /
+
 options:
     resource: "@OptionsBundle/Resources/config/routing.yml"
     prefix:   /

@@ -110,6 +110,15 @@ class HomeController extends Controller
         'HomeBundle\Form\TaskType', $taskEntity, 'POST', 'edit_specificListVideo_form');
         $edit_specificList_form_ajax = $this->createCustomForm(
         'HomeBundle\Form\TaskType', $taskEntity, 'POST', 'edit_specificList_form');
+        $increase_comments_amount_video_form_ajax = $this->createCustomForm(
+        'HomeBundle\Form\TaskType', $taskEntity, 'POST', 'increase_comments_amount_video_form');
+        
+        $read_lyrics_form_ajax = $this->createCustomForm(
+        'HomeBundle\Form\TaskType', $taskEntity, 'POST', 'read_lyrics_form');
+        
+        
+        
+//        increase-comments-amount-video-ajax
         
         return $this->render('@Home/home/home.html.twig', array(
             'get_task_properties_form_ajax' => $get_task_properties_form_ajax->createView(),
@@ -154,7 +163,9 @@ class HomeController extends Controller
             'delete_specificList_form_ajax' => $delete_specificList_form_ajax->createView(),
             'delete_specificListVideo_form_ajax' => $delete_specificListVideo_form_ajax->createView(),
             'edit_specificListVideo_form_ajax' => $edit_specificListVideo_form_ajax->createView(),
-            'edit_specificList_form_ajax' => $edit_specificList_form_ajax->createView()
+            'edit_specificList_form_ajax' => $edit_specificList_form_ajax->createView(),
+            'increase_comments_amount_video_form_ajax' => $increase_comments_amount_video_form_ajax->createView(),
+            'read_lyrics_form_ajax' => $read_lyrics_form_ajax->createView()
         ));
          
     }

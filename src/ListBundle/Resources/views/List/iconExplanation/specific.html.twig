@@ -38,13 +38,14 @@
         
     var specificIconButton = document.getElementById('specificIconButton');
 
-    my_video.onload = set_specificListVideo();
+{#    my_video.onload = set_specificListVideo();#}
         
     var newSpecificListIcon = document.getElementById('newSpecificListIcon');
     newSpecificListIcon.addEventListener("click", windowSet_specificList, false);
     
-    specificIconButton.addEventListener("click", get_specificList, false);
+{#    specificIconButton.addEventListener("click", get_specificList, false);#}
 
+    window.onload = get_specificList();
 
         function set_specificListVideo()
         {

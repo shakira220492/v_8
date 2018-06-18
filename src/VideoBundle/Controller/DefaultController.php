@@ -18,7 +18,7 @@ class DefaultController extends Controller {
             $em = $this->getDoctrine()->getManager();
 
             $video = $em->createQuery(
-                    "SELECT v.videoId, v.videoName, v.videoDescription, v.videoImage, v.videoContent, v.videoAmountViews, v.videoLikes, v.videoDislikes, 
+                    "SELECT v.videoId, v.videoName, v.videoDescription, v.videoImage, v.videoContent, v.videoUpdatedate, v.videoAmountViews, v.videoLikes, v.videoDislikes, 
                         u.userId, u.userName, u.userEmail, u.userPassword 
                     FROM HomeBundle:Video v 
                     JOIN HomeBundle:User u 
@@ -27,12 +27,20 @@ class DefaultController extends Controller {
 
             $videos = $video->getResult();
 
+
+            
             if ($videos) {
+                
+                $videoUpdatedate = $videos[0]['videoUpdatedate'];
+                
+                $videoUpdatedateString = $videoUpdatedate->format('d-M-Y');
+                
                 $videoId_Value = $videos[0]['videoId'];
                 $videoName_Value = $videos[0]['videoName'];
                 $videoDescription_Value = $videos[0]['videoDescription'];
                 $videoImage_Value = $videos[0]['videoImage'];
                 $videoContent_Value = $videos[0]['videoContent'];
+                $videoUpdatedate_Value = $videoUpdatedateString;
                 $videoAmountViews_Value = $videos[0]['videoAmountViews'];
                 $videoLikes_Value = $videos[0]['videoLikes'];
                 $videoDislikes_Value = $videos[0]['videoDislikes'];
@@ -46,6 +54,7 @@ class DefaultController extends Controller {
                 $videoDescription_Value = "_";
                 $videoImage_Value = "_";
                 $videoContent_Value = "_";
+                $videoUpdatedate_Value = "_";
                 $videoAmountViews_Value = "_";
                 $videoLikes_Value = "_";
                 $videoDislikes_Value = "_";
@@ -62,6 +71,7 @@ class DefaultController extends Controller {
                 'videoDescription' => $videoDescription_Value,
                 'videoImage' => $videoImage_Value,
                 'videoContent' => $videoContent_Value,
+                'videoUpdatedate' => $videoUpdatedate_Value,
                 'videoAmountViews' => $videoAmountViews_Value,
                 'videoLikes' => $videoLikes_Value,
                 'videoDislikes' => $videoDislikes_Value,
@@ -82,6 +92,7 @@ class DefaultController extends Controller {
 
 //            $numAle = rand(1, 9);
             $videoId = 1;
+//            $videoId = $_POST['idVideo'];
 
 //            $comment = $em->createQuery(
 //                "SELECT c.commentId, c.commentContent, c.commentLikes, c.commentDislikes, c.commentCreationdate, 
@@ -98,7 +109,7 @@ class DefaultController extends Controller {
             $query = $em->createQuery(
                 "SELECT c.commentId, c.commentContent, c.commentLikes, c.commentDislikes, c.commentCreationdate, 
                 u.userId, u.userName, 
-                v.videoId 
+                v.videoId, v.videoAmountComments 
                 FROM HomeBundle:Comment c 
                 JOIN HomeBundle:User u 
                 WITH u.userId = c.user 
@@ -108,12 +119,14 @@ class DefaultController extends Controller {
             
             $comment = $query->getResult();
 
-            $amountComments = 0;
-            while (isset($comment[$amountComments]['commentId'])) {
-                $amountComments++;
-            }
+            $amountComments = $comment[0]['videoAmountComments'];
             
-            $maxValue = $amountComments - 1;
+//            $amountComments = 0;
+//            while (isset($comment[$amountComments]['commentId'])) {
+//                $amountComments++;
+//            }
+            
+            $maxValue = $amountComments - 2;
             
             $numAle = rand(0, $maxValue);
             
@@ -239,5 +252,99 @@ class DefaultController extends Controller {
             );
             return new Response(json_encode($users2), 200, array('Content-Type' => 'application/json'));
         }
+    }
+    
+    public function increaseCommentsAmountVideoAction(Request $request) {
+        if ($request->isXMLHttpRequest()) {
+
+            $em = $this->getDoctrine()->getManager();
+
+            $idVideo = $_POST['idVideo'];
+
+            $video = $em->getRepository('HomeBundle:Video')->findOneByVideoId($idVideo);
+
+            $amountComments = $video->getVideoAmountComments();
+            
+            $newAmountComments = $amountComments + 1;
+            
+            $video->setVideoAmountComments($newAmountComments);
+            $em->persist($video);
+            $em->flush();
+
+            $users2 = array();
+            $users2[0] = array(
+                'variable' => "funciona"
+            );
+            return new Response(json_encode($users2), 200, array('Content-Type' => 'application/json'));
+        }
+    }
+    
+    function readLyricsAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+//
+        $idVideo = $_POST['idVideo'];
+
+        if ($request->isXMLHttpRequest()) {
+
+            $lyricsLine = $em->createQuery(
+                "SELECT ll.lyricslineId, lw.lyricswordId, lw.lyricswordContent, lw.lyricswordStarttime, lw.lyricswordEndtime, v.videoId 
+                FROM HomeBundle:Lyricsline ll 
+                JOIN HomeBundle:Video v 
+                WITH ll.video = v.videoId 
+                JOIN HomeBundle:Lyricsword lw 
+                WITH lw.lyricsline = ll.lyricslineId 
+                WHERE ll.video = '$idVideo'"
+            );
+            
+//            $lyricsLine = $em->createQuery(
+//                "SELECT ll.lyricslineId, ll.lyricslineContent, ll.lyricslineStarttime, ll.lyricslineEndtime, v.videoId 
+//                FROM HomeBundle:Lyricsline ll
+//                JOIN HomeBundle:Video v
+//                WITH ll.video = v.videoId 
+//                WHERE ll.video = '$idVideo'"
+//            );
+            
+            $lyrics = $lyricsLine->getResult();
+            
+            $amountLines = 0;
+            while (isset($lyrics[$amountLines]['lyricslineId'])) {
+                $amountLines++;
+            }
+            
+            $i = 0;
+            while (isset($lyrics[$i]['lyricslineId'])) {
+
+                if ($lyrics) {
+                    $lyricslineId_Value = $lyrics[$i]['lyricslineId'];
+                    $lyricswordId_Value = $lyrics[$i]['lyricswordId'];
+                    $lyricswordContent_Value = $lyrics[$i]['lyricswordContent'];
+                    $lyricswordStarttime_Value = $lyrics[$i]['lyricswordStarttime'];
+                    $lyricswordEndtime_Value = $lyrics[$i]['lyricswordEndtime'];
+                    $videoId_Value = $lyrics[$i]['videoId'];
+                    $amountLines_Value = $amountLines;
+                } else {
+                    $lyricslineId_Value = "_";
+                    $lyricswordId_Value = "_";
+                    $lyricswordContent_Value = "_";
+                    $lyricswordStarttime_Value = "_";
+                    $lyricswordEndtime_Value = "_";
+                    $videoId_Value = "_";
+                    $amountLines_Value = $amountLines;
+                }
+
+                $sendData[$i] = array(
+                    'lyricslineId' => $lyricslineId_Value,
+                    'lyricswordId' => $lyricswordId_Value,
+                    'lyricswordContent' => $lyricswordContent_Value,
+                    'lyricswordStarttime' => $lyricswordStarttime_Value,
+                    'lyricswordEndtime' => $lyricswordEndtime_Value,
+                    'videoId' => $videoId_Value,
+                    'amountLines' => $amountLines_Value
+                );
+                $i++;
+            }
+            
+            return new Response(json_encode($sendData), 200, array('Content-Type' => 'application/json'));
+        }        
     }
 }

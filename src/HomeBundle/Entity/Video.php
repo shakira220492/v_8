@@ -66,6 +66,13 @@ class Video
     /**
      * @var integer
      *
+     * @ORM\Column(name="video_amount_comments", type="integer", nullable=false)
+     */
+    private $videoAmountComments;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="video_likes", type="integer", nullable=false)
      */
     private $videoLikes;
@@ -241,6 +248,30 @@ class Video
     public function getVideoAmountViews()
     {
         return $this->videoAmountViews;
+    }
+
+    /**
+     * Set videoAmountComments
+     *
+     * @param integer $videoAmountComments
+     *
+     * @return Video
+     */
+    public function setVideoAmountComments($videoAmountComments)
+    {
+        $this->videoAmountComments = $videoAmountComments;
+
+        return $this;
+    }
+
+    /**
+     * Get videoAmountComments
+     *
+     * @return integer
+     */
+    public function getVideoAmountComments()
+    {
+        return $this->videoAmountComments;
     }
 
     /**

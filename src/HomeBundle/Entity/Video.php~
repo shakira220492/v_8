@@ -66,6 +66,13 @@ class Video
     /**
      * @var integer
      *
+     * @ORM\Column(name="video_amount_comments", type="integer", nullable=false)
+     */
+    private $videoAmountComments;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="video_likes", type="integer", nullable=false)
      */
     private $videoLikes;

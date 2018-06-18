@@ -23,6 +23,14 @@
     
     function captionsIconFunction()
     {
-        alert("CAPTIONS ICON!!! FUNCTION....");
+        var closedCaptionArea = document.getElementById("closedCaptionArea");
+        if (closedCaptionArea.style.display === "none")
+        {
+            closedCaptionArea.style.display = "block";
+        }
+        else
+        {
+            closedCaptionArea.style.display = "none";
+        }
     }
 </script>

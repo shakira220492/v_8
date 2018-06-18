@@ -10,3 +10,22 @@
          opacity: 0.9;' 
          src="files/images/icons/presentation/configuration.png" alt="Mountain View">
 </div>
+<script>
+    var configurationIconButton = document.getElementById('configurationIconButton');
+    
+    configurationIconButton.addEventListener("click", show_configurationIconContent, false);
+    
+    function show_configurationIconContent()
+    {
+        var configurationIconContent = document.getElementById('configurationIconContent');
+        
+        if (configurationIconContent.style.display == "none")
+        {
+            clear_options();
+            configurationIconContent.style.display = "block";
+        } else
+        {
+            configurationIconContent.style.display = "none";
+        }
+    }
+</script>

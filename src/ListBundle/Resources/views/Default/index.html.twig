@@ -1,29 +1,3 @@
-{#ListBundle/Resources/views/Default/index.html.twig#}
-
-{{ form_start(set_cacheList_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'set-cacheList-ajax'|default('form')} }) }}
-{{ form_end(set_cacheList_form_ajax) }}
-
-{{ form_start(get_cacheList_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'get-cacheList-ajax'|default('form')} }) }}
-{{ form_end(get_cacheList_form_ajax) }}
-
-{{ form_start(set_cacheListVideo_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'set-cacheListVideo-ajax'|default('form')} }) }}
-{{ form_end(set_cacheListVideo_form_ajax) }}
-
-{{ form_start(get_cacheListVideo_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'get-cacheListVideo-ajax'|default('form')} }) }}
-{{ form_end(get_cacheListVideo_form_ajax) }}
-
-{{ form_start(set_dataminingList_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'set-dataminingList-ajax'|default('form')} }) }}
-{{ form_end(set_dataminingList_form_ajax) }}
-
-{{ form_start(get_dataminingList_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'get-dataminingList-ajax'|default('form')} }) }}
-{{ form_end(get_dataminingList_form_ajax) }}
-
-{{ form_start(set_dataminingListVideo_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'set-dataminingListVideo-ajax'|default('form')} }) }}
-{{ form_end(set_dataminingListVideo_form_ajax) }}
-
-{{ form_start(get_dataminingListVideo_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'get-dataminingListVideo-ajax'|default('form')} }) }}
-{{ form_end(get_dataminingListVideo_form_ajax) }}
-
 {{ form_start(set_specificList_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'set-specificList-ajax'|default('form')} }) }}
 {{ form_end(set_specificList_form_ajax) }}
 
@@ -286,29 +260,6 @@
      right: 0px;
      z-index: 10;'>
 
-    {{ include('@List/methods/main.html.twig') }}
-
-    <div
-        style="z-index: 2;
-        position: absolute;
-        width: 100%;
-        height: 10px;
-        justify-content: center;
-        display: flex;">
-        <div
-            style="
-            position: absolute;
-            width: 180px;
-            height: 30px;">
-
-            {#icons' images' IMAGES OR VISIBLE CONTENT#}
-            {{ include('@List/List/iconImage/specific.html.twig') }}
-            {{ include('@List/List/iconImage/cache.html.twig') }}
-            {{ include('@List/List/iconImage/datamining.html.twig') }}
-
-        </div>
-    </div>
-
     <div id="listBundle-specific" 
          style="
          position: absolute;
@@ -323,61 +274,12 @@
              z-index: 2;">
             {{ include('@List/List/iconExplanation/specific.html.twig') }}
         </div>
-    </div>
-
-    <div id="listBundle-cache" 
-         style="
-         position: absolute;
-         bottom: 0px;
-         top: 40px;
-         left: 0px;
-         right: 0px;
-         z-index: 1;">
-        <div style="position: absolute;
-             width: 100%;
-             height: 100%;
-             z-index: 2;">
-            {{ include('@List/List/iconExplanation/cache.html.twig') }}
-        </div>
-    </div>
-
-    <div id="listBundle-datamining" 
-         style="
-         position: absolute;
-         bottom: 0px;
-         top: 40px;
-         left: 0px;
-         right: 0px;
-         z-index: 1;">
-        <div style="position: absolute;
-             width: 100%;
-             height: 100%;
-             z-index: 2;">
-            {{ include('@List/List/iconExplanation/datamining.html.twig') }}
-        </div>
-    </div>
-        
+    </div>  
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>    
+        
+        
+        
+{#<script>    
     window.onload = prepareListBundle();
 
     var my_video = document.getElementById("my_video");
@@ -404,4 +306,4 @@
             alert('ERROR');
         });
     }
-</script>
+</script>#}

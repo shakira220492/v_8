@@ -114,7 +114,9 @@
             {{ include('@Home/home/sub/sessionArea.html.twig') }}
         </div>
 
-
+        <div id="closedCaptionArea">
+            -
+        </div>
 
         <div id='playBannerBgColor'
              style='
@@ -133,6 +135,11 @@
     </body>
 
     <script>
+{#        $('#closedCaptionArea').draggable({containment: "#volumeBar", scroll: true});#}
+        {#$('#closedCaptionArea').draggable();#}
+    </script>
+    
+    <script>
         var icon = document.getElementById("displaceIcon");
         var displaceIconWrapper = document.getElementById("displaceIcon-wrapper");
 
@@ -144,8 +151,6 @@
         var modeContent = "dynamic";
         
         var modeOptions_VideoBundle = "visible";
-
-        window.onload = paintField();
 
         document.addEventListener("mousemove", transitionDisplace, false);
         document.addEventListener("mousemove", delizeElements, false);
@@ -305,7 +310,30 @@
                     return sessionStatus;
                 } else
                 {
-                    showOpenSession(sessionStatus);
+                    
+                    var sessionStatus = data[0].sessionStatus;
+                    var sessionId = data[0].sessionId;
+                    var userName = data[0].userName;
+                    var userFirstgivenname = data[0].userFirstgivenname;
+                    var userSecondgivenname = data[0].userSecondgivenname;
+                    var userFirstfamilyname = data[0].userFirstfamilyname;
+                    var userSecondfamilyname = data[0].userSecondfamilyname;
+                    var userEmail = data[0].userEmail;
+                    var userPassword = data[0].userPassword;
+                    var userBiography = data[0].userBiography;
+                    
+                    showOpenSession(
+                        sessionStatus, 
+                        sessionId, 
+                        userName, 
+                        userFirstgivenname, 
+                        userSecondgivenname, 
+                        userFirstfamilyname, 
+                        userSecondfamilyname, 
+                        userEmail, 
+                        userPassword, 
+                        userBiography 
+                    );
                     return sessionStatus;
                 }
             }).fail(function () {
@@ -323,11 +351,22 @@
             document.getElementById("btnLogIn").style.opacity = 1;
 
         {#            alert("close");#}
+{# here we need to refresh website #}
 
                 return sessionStatus;
             }
 
-            function showOpenSession(sessionStatus)
+            function showOpenSession(
+                sessionStatus, 
+                sessionId, 
+                userName, 
+                userFirstgivenname, 
+                userSecondgivenname, 
+                userFirstfamilyname, 
+                userSecondfamilyname, 
+                userEmail, 
+                userPassword, 
+                userBiography )
             {
                 document.getElementById("logIn").style.opacity = 0;
                 document.getElementById("user_name").style.opacity = 0;
@@ -336,7 +375,10 @@
 
                 document.getElementById("btnLogOut").style.opacity = 1;
 
-        {#            alert("open");#}
+                var infoAboutUser_session = document.getElementById("infoAboutUser-session");
+                infoAboutUser_session.innerHTML = "@" + userName + "<br>" + 
+                userFirstgivenname+" "+userSecondgivenname+" "+userFirstfamilyname+" "+userSecondfamilyname+"<br>"+
+                userEmail;
 
                 return sessionStatus;
             }
@@ -356,6 +398,14 @@
                 {
                     $.post(url, {user_name: user_name, user_password: user_password}, function (data)
                     {
+                        
+{#            var id = data[0].id;
+            var userName = data[0].userName;
+            
+            alert("ID ..... "+id);
+            alert("USER NAME .... "+userName);#}
+                        
+                        
                         checkSession();
                     }).fail(function () {
                         alert('ERROR');
@@ -376,4 +426,6 @@
                 });
             }
     </script>
+    
+
 {% endblock %}

@@ -11,3 +11,22 @@
          z-index: 1;' 
          src="files/images/icons/presentation/list.png" alt="Mountain View">
 </div>
+<script>
+    var listIconButton = document.getElementById('listIconButton');
+    
+    listIconButton.addEventListener("click", show_listIconContent, false);
+    
+    function show_listIconContent()
+    {
+        var listIconContent = document.getElementById('listIconContent');
+        
+        if (listIconContent.style.display == "none")
+        {
+            clear_options();
+            listIconContent.style.display = "block";
+        } else
+        {
+            listIconContent.style.display = "none";
+        }
+    }
+</script>

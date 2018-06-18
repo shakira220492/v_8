@@ -10,3 +10,22 @@
          opacity: 0.9;' 
          src="files/images/icons/presentation/datamining.png" alt="Mountain View">
 </div>
+<script>
+    var dataminingIconButton = document.getElementById('dataminingIconButton');
+    
+    dataminingIconButton.addEventListener("click", show_dataminingIconContent, false);
+    
+    function show_dataminingIconContent()
+    {
+        var dataminingIconContent = document.getElementById('dataminingIconContent');
+        
+        if (dataminingIconContent.style.display == "none")
+        {
+            clear_options();
+            dataminingIconContent.style.display = "block";
+        } else
+        {
+            dataminingIconContent.style.display = "none";
+        }
+    }
+</script>

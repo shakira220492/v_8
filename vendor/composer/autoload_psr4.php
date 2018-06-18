@@ -44,6 +44,7 @@ return array(
     'ListBundle\\' => array($baseDir . '/src/ListBundle'),
     'Incenteev\\ParameterHandler\\' => array($vendorDir . '/incenteev/composer-parameter-handler'),
     'HomeBundle\\' => array($baseDir . '/src/HomeBundle'),
+    'HistoryBundle\\' => array($baseDir . '/src/HistoryBundle'),
     'Fig\\Link\\' => array($vendorDir . '/fig/link-util/src'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'Doctrine\\Common\\Cache\\' => array($vendorDir . '/doctrine/cache/lib/Doctrine/Common/Cache'),
@@ -54,6 +55,7 @@ return array(
     'CreateBundle\\' => array($baseDir . '/src/CreateBundle'),
     'ConfigurationBundle\\' => array($baseDir . '/src/ConfigurationBundle'),
     'Composer\\CaBundle\\' => array($vendorDir . '/composer/ca-bundle/src'),
+    'CacheBundle\\' => array($baseDir . '/src/CacheBundle'),
     'ArtistBundle\\' => array($baseDir . '/src/ArtistBundle'),
     'AdvertisingBundle\\' => array($baseDir . '/src/AdvertisingBundle'),
 );

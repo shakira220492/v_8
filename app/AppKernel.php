@@ -32,6 +32,8 @@ class AppKernel extends Kernel {
             new PresentationBundle\PresentationBundle(),
             new SessionBundle\SessionBundle(),
             new OptionsBundle\OptionsBundle(),
+            new HistoryBundle\HistoryBundle(),
+            new CacheBundle\CacheBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

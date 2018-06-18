@@ -10,3 +10,49 @@
          opacity: 0.9;' 
          src="files/images/icons/presentation/artist.png" alt="Mountain View">
 </div>
+
+<script>
+    var artistIconButton = document.getElementById('artistIconButton');
+    
+    artistIconButton.addEventListener("click", show_artistIconContent, false);
+    
+    function show_artistIconContent()
+    {
+        var artistIconContent = document.getElementById('artistIconContent');
+        
+        if (artistIconContent.style.display == "none")
+        {
+            clear_options();
+            artistIconContent.style.display = "block";
+        } else
+        {
+            artistIconContent.style.display = "none";
+        }
+    }
+    
+    
+    function clear_options()
+    {
+        var artistIconContent = document.getElementById('artistIconContent');
+        var configurationIconContent = document.getElementById('configurationIconContent');
+        var createIconContent = document.getElementById('createIconContent');
+        var dataminingIconContent = document.getElementById('dataminingIconContent');
+        var listIconContent = document.getElementById('listIconContent');
+        var mediaIconContent = document.getElementById('mediaIconContent');
+        var profileIconContent = document.getElementById('profileIconContent');
+        var searchIconContent = document.getElementById('searchIconContent');
+        var videoIconContent = document.getElementById('videoIconContent');
+        
+        artistIconContent.style.display = "none";
+        configurationIconContent.style.display = "none";
+        createIconContent.style.display = "none";
+        dataminingIconContent.style.display = "none";
+        listIconContent.style.display = "none";
+        mediaIconContent.style.display = "none";
+        profileIconContent.style.display = "none";
+        searchIconContent.style.display = "none";
+        searchIconContent.style.display = "none";
+        videoIconContent.style.display = "none";
+    }
+    
+</script>

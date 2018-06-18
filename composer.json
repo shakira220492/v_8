@@ -20,7 +20,9 @@
             "PlayBannerBundle\\": "src/PlayBannerBundle",
             "PresentationBundle\\": "src/PresentationBundle",
             "SessionBundle\\": "src/SessionBundle",
-            "OptionsBundle\\": "src/OptionsBundle"
+            "OptionsBundle\\": "src/OptionsBundle",
+            "HistoryBundle\\": "src/HistoryBundle",
+            "CacheBundle\\": "src/CacheBundle"
         },
         "classmap": [
             "app/AppKernel.php",

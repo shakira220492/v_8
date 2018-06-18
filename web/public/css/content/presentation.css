@@ -8,7 +8,7 @@ div.iconDiv {
 div#sessionArea {
     position: absolute;
     z-index: 3;
-    left: 0px;
+    right: 0px;
     width: 30px;
     top: 0px;
     bottom: 0px;
@@ -50,10 +50,10 @@ div#invisibleLayer {
 
 div#listBar {
     position: absolute;
-    z-index: 3;
+    z-index: 5;
     right: 0px;
     width: 30px;
-    top: 30px;
+    top: 135px;
     bottom: 40px;
     transition-property: all;
     transition-duration: 2s;
@@ -99,6 +99,21 @@ div#searchArea {
     top: 0px;
     bottom: 0px;
 }
+
+div#closedCaptionArea {
+    position: absolute;
+    background-color: black;
+    color: white;
+    font-size: medium;
+    opacity: 0.5;
+    z-index: 5;
+    left: 0px;
+    width: 500px;
+    bottom: 100px;
+    cursor: move;
+    display: block;
+}
+
 
 div#manage {
     position: absolute;

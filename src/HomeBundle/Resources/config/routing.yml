@@ -21,7 +21,7 @@ f_Presentation:
     prefix:   /f_Presentation
     
 g_SearchEngine:
-    resource: "routes/g_SearchEngine/g_searchEngine.yml"
+    resource: "routes/g_SearchEngine/g_SearchEngine.yml"
     prefix:   /g_SearchEngine
     
 h_Task:
@@ -36,9 +36,17 @@ j_PlayBanner:
     resource: "routes/j_PlayBanner/j_PlayBanner.yml"
     prefix:   /j_PlayBanner
     
-k_video:
+k_Video:
     resource: "routes/k_Video/k_Video.yml"
     prefix:   /k_Video
+        
+l_Cache:
+    resource: "routes/l_Cache/l_Cache.yml"
+    prefix:   /l_Cache
+        
+m_Datamining:
+    resource: "routes/m_Datamining/m_Datamining.yml"
+    prefix:   /m_Datamining
     
 GUIProperties:
     resource: "routes/GUIProperties/GUIProperties.yml"
@@ -47,8 +55,3 @@ GUIProperties:
 home:
     path:     /
     defaults: { _controller: HomeBundle:Home:home }
-    
-    
-    
-    
-    

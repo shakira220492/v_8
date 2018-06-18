@@ -83,47 +83,6 @@ customizeList:
 
 
 
-
-set_cacheList_form:
-    path:     /setCacheList
-    defaults: { _controller: ListBundle:Default:setCacheList }
-    methods:  POST
-    
-get_cacheList_form:
-    path:     /getCacheList
-    defaults: { _controller: ListBundle:Default:getCacheList }
-    methods:  POST
-    
-set_cacheListVideo_form:
-    path:     /setCacheListVideo
-    defaults: { _controller: ListBundle:Default:setCacheListVideo }
-    methods:  POST
-    
-get_cacheListVideo_form:
-    path:     /getCacheListVideo
-    defaults: { _controller: ListBundle:Default:getCacheListVideo }
-    methods:  POST
-    
-set_dataminingList_form:
-    path:     /setDataminingList
-    defaults: { _controller: ListBundle:Default:setDataminingList }
-    methods:  POST
-    
-get_dataminingList_form:
-    path:     /getDataminingList
-    defaults: { _controller: ListBundle:Default:getDataminingList }
-    methods:  POST
-    
-set_dataminingListVideo_form:
-    path:     /setDataminingListVideo
-    defaults: { _controller: ListBundle:Default:setDataminingListVideo }
-    methods:  POST
-    
-get_dataminingListVideo_form:
-    path:     /getDataminingListVideo
-    defaults: { _controller: ListBundle:Default:getDataminingListVideo }
-    methods:  POST
-    
 set_specificList_form:
     path:     /setSpecificList
     defaults: { _controller: ListBundle:Default:setSpecificList }

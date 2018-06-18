@@ -10,3 +10,22 @@
          opacity: 0.9;' 
          src="files/images/icons/presentation/search.png" alt="Mountain View">
 </div>
+<script>
+    var searchIconButton = document.getElementById('searchIconButton');
+    
+    searchIconButton.addEventListener("click", show_searchIconContent, false);
+    
+    function show_searchIconContent()
+    {
+        var searchIconContent = document.getElementById('searchIconContent');
+        
+        if (searchIconContent.style.display == "none")
+        {
+            clear_options();
+            searchIconContent.style.display = "block";
+        } else
+        {
+            searchIconContent.style.display = "none";
+        }
+    }
+</script>

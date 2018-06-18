@@ -86,6 +86,7 @@ class ComposerStaticInit3978278c851311fa629e159ebd667061
         'H' => 
         array (
             'HomeBundle\\' => 11,
+            'HistoryBundle\\' => 14,
         ),
         'F' => 
         array (
@@ -105,6 +106,7 @@ class ComposerStaticInit3978278c851311fa629e159ebd667061
             'CreateBundle\\' => 13,
             'ConfigurationBundle\\' => 20,
             'Composer\\CaBundle\\' => 18,
+            'CacheBundle\\' => 12,
         ),
         'A' => 
         array (
@@ -266,6 +268,10 @@ class ComposerStaticInit3978278c851311fa629e159ebd667061
         array (
             0 => __DIR__ . '/../..' . '/src/HomeBundle',
         ),
+        'HistoryBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/HistoryBundle',
+        ),
         'Fig\\Link\\' => 
         array (
             0 => __DIR__ . '/..' . '/fig/link-util/src',
@@ -305,6 +311,10 @@ class ComposerStaticInit3978278c851311fa629e159ebd667061
         'Composer\\CaBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/ca-bundle/src',
+        ),
+        'CacheBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/CacheBundle',
         ),
         'ArtistBundle\\' => 
         array (

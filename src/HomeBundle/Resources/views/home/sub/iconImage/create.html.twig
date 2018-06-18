@@ -11,3 +11,22 @@
          z-index: 1;' 
          src="files/images/icons/presentation/create.png" alt="Mountain View">
 </div>
+<script>
+    var createIconButton = document.getElementById('createIconButton');
+    
+    createIconButton.addEventListener("click", show_createIconContent, false);
+    
+    function show_createIconContent()
+    {
+        var createIconContent = document.getElementById('createIconContent');
+        
+        if (createIconContent.style.display == "none")
+        {
+            clear_options();
+            createIconContent.style.display = "block";
+        } else
+        {
+            createIconContent.style.display = "none";
+        }
+    }
+</script>

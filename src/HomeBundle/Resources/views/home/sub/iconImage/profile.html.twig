@@ -11,3 +11,22 @@
          z-index: 1;' 
          src="files/images/icons/presentation/profile.png" alt="Mountain View">
 </div>
+<script>
+    var profileIconButton = document.getElementById('profileIconButton');
+    
+    profileIconButton.addEventListener("click", show_profileIconContent, false);
+    
+    function show_profileIconContent()
+    {
+        var profileIconContent = document.getElementById('profileIconContent');
+        
+        if (profileIconContent.style.display == "none")
+        {
+            clear_options();
+            profileIconContent.style.display = "block";
+        } else
+        {
+            profileIconContent.style.display = "none";
+        }
+    }
+</script>

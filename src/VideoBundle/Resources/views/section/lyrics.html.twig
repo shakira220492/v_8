@@ -1,1 +1,299 @@
-LYRICS BUNDLE
+<style>
+    
+    #editLyrics {
+{#        background-color: #1ab7ea;#}
+        width: 100%;
+        height: 400px;
+        position: absolute;
+        top: 60px;
+        overflow-y: scroll;
+    }
+    
+</style>
+
+{#var closedCaptionArea = document.getElementById("closedCaptionArea");#}
+
+
+<div id='editClosedCaptionButton' class="animatedButton">
+    <img style="width:30px; height:30px; top: 30px; left: 30px; z-index: 30;" 
+         src='files/images/icons/video/like.png' 
+         alt='Mountain View'>
+</div>
+
+<div id="editLyrics" {#style="cursor: pointer; background-color: white;"#}>
+    <div 
+        style='
+        cursor: pointer; 
+        background-color: gray; 
+        display: inline-block; 
+        opacity: 0.5;' onclick="zxcv1234();">
+        boton
+    </div>
+    
+    <div id='currentTime' 
+        style='
+        cursor: pointer; 
+        background-color: gray; 
+        display: inline-block; 
+        opacity: 0.5;'>
+        currentTime
+    </div>
+    
+    <select style="color: black;">
+	<option value=“volvo”>
+            volvo
+        </option>
+	<option value=“Mecedes”>
+            Mercedes
+        </option>
+	<option value=“vvo”>
+            vvo
+        </option>
+	<option value=“adentro”>
+            adentro
+        </option>
+    </select>
+    
+</div>
+    
+<script>
+    function zxcv1234()
+    {
+        alert("si esta funcionando");
+        var v = document.getElementById("my_video");
+        v.currentTime = "8.082911";
+    }
+    
+    window.onload = setInterval('updateCurrentTime()', 1000);
+    
+    function updateCurrentTime()
+    {
+        var v2204 = document.getElementById("my_video");
+        var currentTimeData = v2204.currentTime;
+        var currentTime = document.getElementById("currentTime");
+        currentTime.innerHTML = currentTimeData;
+    }
+    
+</script>
+
+<script>
+{#    var v = document.getElementById("my_video");
+    v.addEventListener("loadeddata", function(ev){
+        
+        var minutes = parseInt(v.duration / 60, 10);
+        var seconds = v.duration % 60;
+        
+        var videoDuration = v.duration;
+        document.getElementById("editLyrics").innerHTML = v.duration;
+        document.getElementById("editLyrics").innerHTML = minutes + " : " + seconds;
+    }, true);#}
+    
+    var editClosedCaptionButton = document.getElementById("editClosedCaptionButton");
+    editClosedCaptionButton.addEventListener("click", editCloseCaption, false);
+    var v = document.getElementById("my_video");
+    
+    function editCloseCaption()
+    {
+        var videoDuration = parseInt(v.duration);
+        var editLyrics = document.getElementById("editLyrics");
+        
+        var minutes = 00;
+        var seconds = 00;
+        var minutesString = ""+minutes;
+        var secondsString = ""+seconds;
+        
+        for (i=0; i<=videoDuration; i++)
+        {
+            
+            if (minutes<=9)
+            {
+                minutesString = "0"+minutes;
+            }
+            else
+            {
+                minutesString = ""+minutes;
+            }
+            
+            if (seconds<=9)
+            {
+                secondsString = "0"+seconds;
+            }
+            else
+            {
+                secondsString = ""+seconds;
+            }
+            
+            $("#editLyrics").append(
+                "<div style='cursor: pointer; background-color: gray; display: inline-block; opacity:0.5;'>"+minutesString+":"+secondsString+"</div>"+
+                "    "+
+                "<input type='text' id='ccContent' placeholder='start' "+
+                "style='width: 50px;"+
+                "height: 30px;"+
+                "background-color: white;"+
+                "color: black;"+
+                "opacity: 0.5;"+
+                "border: 0;"+
+                "align-content: center;'/>"+"<br><hr>"
+            );
+    
+            seconds++;
+            
+            if(seconds === 60)
+            {
+                seconds = 0;
+                minutes++;
+            }
+    
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+{#    while (i < amountVideos)
+    {
+        var specificlistvideoId = data[i].specificlistvideoId;
+        var specificlist = data[i].specificlist;
+        var userName = data[i].userName;
+        var amountVideos = data[i].amountVideos;
+        var videoId = data[i].videoId;
+        var videoName = data[i].videoName;
+        var videoDescription = data[i].videoDescription;
+        var videoImage = data[i].videoImage;
+        var videoContent = data[i].videoContent;
+        var videoUpdatedate = data[i].videoUpdatedate;
+        var videoAmountViews = data[i].videoAmountViews;
+        var videoLikes = data[i].videoLikes;
+        var videoDislikes = data[i].videoDislikes;
+
+        $("#videosFromList"+specificlist).append(
+            "<div class='respectlyVideo' id='respectlyVideoBtn"+specificlistvideoId+"' data-id3='"+specificlistvideoId+"'>"+
+            "<table border='0' width='100%' height='50px'>"+
+            "<tr>"+
+            "<td width='75px' height='50px'>"+
+                "<div class='imageVideo' id='imageVideo"+specificlistvideoId+"'>"+
+                "<img style='top: 0px; left: 0px; position: relative; width:75px; height:50px; opacity: 0.9; z-index: 1;' src='"+videoImage+"' alt='Mountain View'>"+
+                "</div>"+
+            "</td>"+
+            "<td> "+
+                "<div class='infoVideo' id='infoVideo"+specificlistvideoId+"'>"+
+                videoName+"<br>"+userName+
+                "</div>"+
+            "</td>"+
+            "<td width='20px'>"+
+                "<div class='replayVideo' id='replayVideoBtn"+specificlistvideoId+"' data-id3='"+specificlistvideoId+"'>R"+
+                "</div>"+
+            "</td>"+
+            "<td width='20px'>"+
+                "<div class='playVideo' id='playVideoBtn"+specificlistvideoId+"' data-id3='"+specificlistvideoId+"'>>"+
+                "</div>"+
+            "</td>"+
+            "<td width='20px'>"+
+                "<div class='deleteVideo' id='deleteVideoBtn"+specificlistvideoId+"' data-id3='"+specificlistvideoId+"'>x"+
+                "</div>"+
+            "</td>"+
+            "</tr>"+
+            "</table>"+
+            "</div>"
+        );
+
+        i++;
+    }#}
+</script>
+
+
+
+
+
+
+
+<script>
+    var v_2 = document.getElementById("my_video");
+    v_2.onload = playCaptions();
+    
+    var i = 0;
+    function playCaptions()
+    {
+        
+        var form = $('#read-lyrics-ajax');
+        var url = form.attr('action');
+
+        var idVideo = 1;
+
+        $.post(url, {idVideo: idVideo}, function (data)
+        {
+            alert('SI FUNCIONA READ LYRICS VIDEO');
+
+            var i = 0;
+            var line = 0;
+            var position = 0;
+            var amountRegisters = data[0].amountLines;
+
+            var v = document.getElementById("my_video");
+            var videoDuration_2 = v.duration;
+                    
+                var closedCaptionArea_248 = document.getElementById("closedCaptionArea");
+                    
+                var animatedLyrics_2 = setInterval(function(){
+                    
+                    position+=10;
+                    currentTime = v.currentTime;
+
+                    console.log("video's current time "+currentTime);
+
+                    console.log("i: " + i);
+                    console.log("amountRegisters: " + amountRegisters);
+                    
+                    if (i === amountRegisters)
+                    {
+                        clearTimeout(animatedLyrics_2);
+                        closedCaptionArea_248.innerHTML = "--";
+                    }
+                    else
+                    {                        
+                        var lyricslineId = data[i].lyricslineId;
+                        var lyricswordId = data[i].lyricswordId;
+                        var lyricswordContent = data[i].lyricswordContent;
+                        var lyricswordStarttime = data[i].lyricswordStarttime;
+                        var lyricswordEndtime = data[i].lyricswordEndtime;
+                        var videoId = data[i].videoId;
+                        var amountLines = data[i].amountLines;
+                        
+                        closedCaptionArea_248.innerHTML = lyricswordContent + "<br>";
+                        
+                        if (lyricswordStarttime <= currentTime && currentTime <= lyricswordEndtime)
+                        {
+                            var v_2 = document.getElementById("my_video");
+                            v_2.addEventListener("pause", stopVideoKaraoke, false);
+
+                            function stopVideoKaraoke()
+                            {
+                                clearTimeout(animatedLyrics_2);
+                            }
+                        } else
+                        {
+                            i++;
+                        }
+                    }
+
+                    if (currentTime >= videoDuration_2)
+                    {
+                        alert("la funcion expiró!");
+                        clearTimeout(animatedLyrics_2);
+                    }
+
+                }, 1000);
+                
+        }).fail(function () {
+            alert('ERROR');
+        });
+    }
+    
+</script>
