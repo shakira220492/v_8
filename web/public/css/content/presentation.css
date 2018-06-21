@@ -110,6 +110,7 @@ div#closedCaptionArea {
     left: 0px;
     width: 500px;
     bottom: 100px;
+    height: 25px;
     cursor: move;
     display: block;
 }

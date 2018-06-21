@@ -276,34 +276,3 @@
         </div>
     </div>  
 </div>
-        
-        
-        
-{#<script>    
-    window.onload = prepareListBundle();
-
-    var my_video = document.getElementById("my_video");
-
-    function prepareListBundle()
-    {
-        var form = $('#check-session-ajax');
-        var url = form.attr('action');
-
-        $.post(url, function (data)
-        {
-            var sessionStatus = data[0].sessionStatus;
-
-            if (sessionStatus === "0")
-            {
-                var listBundle = document.getElementById('listBundle');
-                listBundle.innerHTML = "listBundle... logout mode";
-            } else
-            {
-                var listBundle = document.getElementById('listBundle');
-                listBundle.innerHTML = "listBundle... login mode";
-            }
-        }).fail(function () {
-            alert('ERROR');
-        });
-    }
-</script>#}

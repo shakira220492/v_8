@@ -29,16 +29,16 @@ class Lyricsword
     private $lyricswordContent;
 
     /**
-     * @var float
+     * @var integer
      *
-     * @ORM\Column(name="lyricsWord_startTime", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(name="lyricsWord_startTime", type="integer", nullable=false)
      */
     private $lyricswordStarttime;
 
     /**
-     * @var float
+     * @var integer
      *
-     * @ORM\Column(name="lyricsWord_endTime", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(name="lyricsWord_endTime", type="integer", nullable=false)
      */
     private $lyricswordEndtime;
 
@@ -91,7 +91,7 @@ class Lyricsword
     /**
      * Set lyricswordStarttime
      *
-     * @param float $lyricswordStarttime
+     * @param integer $lyricswordStarttime
      *
      * @return Lyricsword
      */
@@ -105,7 +105,7 @@ class Lyricsword
     /**
      * Get lyricswordStarttime
      *
-     * @return float
+     * @return integer
      */
     public function getLyricswordStarttime()
     {
@@ -115,7 +115,7 @@ class Lyricsword
     /**
      * Set lyricswordEndtime
      *
-     * @param float $lyricswordEndtime
+     * @param integer $lyricswordEndtime
      *
      * @return Lyricsword
      */
@@ -129,7 +129,7 @@ class Lyricsword
     /**
      * Get lyricswordEndtime
      *
-     * @return float
+     * @return integer
      */
     public function getLyricswordEndtime()
     {

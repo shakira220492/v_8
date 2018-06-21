@@ -19,6 +19,15 @@
 {{ form_start(read_lyrics_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'read-lyrics-ajax'|default('form')} }) }}
 {{ form_end(read_lyrics_form_ajax) }}
 
+{{ form_start(get_closedCaption_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'get-closedCaption-ajax'|default('form')} }) }}
+{{ form_end(get_closedCaption_form_ajax) }}
+
+{{ form_start(set_closedCaption_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'set-closedCaption-ajax'|default('form')} }) }}
+{{ form_end(set_closedCaption_form_ajax) }}
+
+{{ form_start(delete_specific_closedCaption_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'delete-specific-closedCaption-ajax'|default('form')} }) }}
+{{ form_end(delete_specific_closedCaption_form_ajax) }}
+
 <style>
     #videoNameButton {
         {#        background-color: #ccc;#}
